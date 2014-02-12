@@ -39,16 +39,18 @@ def get_messages( REGION, QUEUE ):
         q.delete_message(result)
 
 while counter <= 5:
-    if queue_count(REGION, QUEUE) > 0:
-        print 'yup'
+    count = queue_count(REGION, QUEUE)
+    if count > 0:
+        print 'yay! Message in Queue - lets do something! '
+        print 'count in queue ', count 
         get_messages(REGION, QUEUE)
         time.sleep(2)
         counter = counter + 1
         print counter
     else:
-        print 'nope'
+        print 'nope, no messages move on dude...'
         time.sleep(10)
-        counter = counter + 5
+        counter = counter + 2
         print counter
 
 
