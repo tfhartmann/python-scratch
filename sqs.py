@@ -7,7 +7,7 @@ import time
 import requests
 
 
-REGION  = 'us-west-2'
+REGION  = 'us-east-1'
 QUEUE   = 'queuetest'
 counter = 1
 

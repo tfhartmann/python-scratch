@@ -4,8 +4,8 @@ import boto.sns
 import json
 
 
-REGION = 'us-west-2'
-TOPIC  = 'arn:aws:sns:us-west-2:473279429418:testtopic'
+REGION = 'us-east-1'
+TOPIC  = 'arn:aws:sns:us-east-1:473279429418:testtopic'
 URL    = 'http://wwwdev-10wa.noc.harvard.edu/tunnels.json'
 
 conn = boto.sns.connect_to_region( REGION )
