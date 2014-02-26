@@ -11,6 +11,16 @@ REGION  = 'us-east-1'
 QUEUE   = 'queuetest'
 counter = 1
 
+def create_queue( REGION, QUEUE):
+    conn = boto.sqs.connect_to_region( REGION )
+    q = conn.lookup( QUEUE ) 
+    if q:
+        print q
+    else:
+        print 'Sorry SQS Queue: ', QUEUE, 'Does not exist!'
+        conn.create_queue( QUEUE )
+        conn.add_permission( QUEUE , QUEUE, 'arn:aws:sns:us-east-1:473279429418:testtopic', 'SendMessage' )
+
 def queue_count( REGION, QUEUE):
     conn = boto.sqs.connect_to_region( REGION )
     q = conn.get_queue( QUEUE )
@@ -37,6 +47,8 @@ def get_messages( REGION, QUEUE ):
         print rst['Message']
         print rst['MessageId']
         q.delete_message(result)
+
+create_queue(REGION, 'testfoo' )
 
 while counter <= 5:
     count = queue_count(REGION, QUEUE)
